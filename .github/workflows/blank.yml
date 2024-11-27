@@ -1,5 +1,3 @@
-
-
 name: CI
 
 on:
@@ -9,21 +7,20 @@ on:
     branches: [ "main" ]
 
   workflow_dispatch:
-
 jobs:
 lint:
-runs-on: ubuntu-latest
-steps:
--uses: actions/checkout@v4
--name: install depedencies
-run: npm install
--name: check code
-run: npx prettier ./src/ --check
-  build:
+   runs-on: ubuntu-latest
+   steps:
+     -uses: actions/checkout@v4
+     -name: install depedencies
+      run: npm install
+     -name: check code
+      run: npx prettier ./src/ --check
+build:
   runs-on: ubuntu-latest
   needs: [ lint ]
   steps:
-  -uses: actions/checkout@v4
-  -name: Run a one-line script
-  run: echo ${{ secerets.TELEGRAM_TOKEN }}
+   -uses: actions/checkout@v4
+   -name: Run a one-line script
+   run: echo ${{ secerets.TELEGRAM_TOKEN }}
   
